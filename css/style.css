@@ -1,0 +1,162 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+html,
+body {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  font-family: "Tahoma", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+
+  background-color: #ffffff;
+  cursor: default;
+}
+
+.visually-hidden:not(:focus):not(:active),
+input[type="checkbox"].visually-hidden,
+input[type="radio"].visually-hidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.container {
+  padding: 0 20px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    margin: 0 auto;
+    padding: 0 30px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container {
+    width: 1260px;
+    padding: 0 20px;
+  }
+}
+
+.main__columns {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.main__column--small {
+  flex-basis: 20%;
+}
+.main__column--large {
+  flex-basis: 70%;
+}
+
+.filter__list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.option {
+  cursor: pointer;
+  user-select: none;
+}
+
+.cards__list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.card {
+  width: 240px;
+  padding: 20px 20px 30px;
+
+  background-color: #fafafa;
+  border: 2px solid #cacaca;
+}
+
+.card__columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card__label {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.card__text {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.card__title {
+  margin: 0;
+  margin-bottom: 10px;
+
+  text-transform: capitalize;
+}
+
+.card__photo {
+  display: block;
+  max-width: 200px;
+  height: auto;
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+
+.card__species {}
+
+.card__gender {}
+
+.card__years {
+  margin: 0;
+  margin-bottom: 10px;
+
+  text-align: center;
+}
+
+.card__films {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.card__film {
+  margin-bottom: 5px;
+  margin-left: 15px;
+}
+
+.card__film:last-child {
+  margin-bottom: 0;
+}
