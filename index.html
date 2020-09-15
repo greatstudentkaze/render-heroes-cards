@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Карточки героев</title>
+  <title>Heroes</title>
   <link rel="stylesheet" href="css/preload.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -13,48 +13,19 @@
   <main class="main container">
     <div class="main__columns">
       <section class="filters main__column main__column--small">
-        <h2 class="filter__title title">Фильтр карточек</h2>
+        <h2 class="filter__title title">Card filter</h2>
         <form class="filter js-filter" method="get">
-          <button class="filter__reset" type="reset">Сбросить</button>
+          <button class="filter__reset" type="reset">Reset</button>
           <fieldset class="filter__group">
-            <legend class="filter__headline">Фильмы:</legend>
-            <ul class="filter__list">
-<!--              <li class="filter__option">-->
-<!--                <label class="option">-->
-<!--                  <input class="option__input v1sually-hidden" type="checkbox" name="film-1">-->
-<!--                  <span class="option__checkbox"></span>-->
-<!--                  Фильм 1-->
-<!--                </label>-->
-<!--              </li>-->
-            </ul>
+            <legend class="filter__headline">Films:</legend>
+            <ul class="filter__list"></ul>
           </fieldset>
         </form>
       </section>
 
       <section class="cards main__column main__column--large">
-        <h2 class="cards__title title">Карточки героев</h2>
-        <ul class="cards__list">
-          <li class="cards__item">
-            <article class="card">
-              <h3 class="card__title">name</h3>
-              <img class="card__photo" src="img/dbimage/97d1d9f934a350cee765c5ac1a466605.jpg" alt="hero1">
-              <div class="card__columns">
-                <p class="card__text">species</p>
-                <p class="card__text">gender</p>
-              </div>
-              <p class="card__years">
-                <span class="card__birthday">birthday</span>-<span class="card__deathday">deathday</span>
-              </p>
-              <p class="card__text">status</p>
-              <p class="card__text">actors</p>
-              <p class="card__label">Фильмы:</p>
-              <ul class="card__films">
-                <li class="card__film">film 1</li>
-                <li class="card__film">film 2</li>
-              </ul>
-            </article>
-          </li>
-        </ul>
+        <h2 class="cards__title title">Hero cards:</h2>
+        <ul class="cards__list"></ul>
       </section>
     </div>
   </main>

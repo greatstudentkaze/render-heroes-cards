@@ -84,15 +84,15 @@ input[type="radio"].visually-hidden {
   margin-bottom: 30px;
 }
 
-.filter {
-  position: relative;
-}
-
-.filter__preload {
+.preloader {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.filter {
+  position: relative;
 }
 
 .filter__list {
@@ -126,10 +126,18 @@ input[type="radio"].visually-hidden {
   margin: 0;
   padding: 0;
   list-style-type: none;
+
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  min-height: 500px;
 }
 
 .card {
-  width: 240px;
+  max-width: 240px;
+  margin: 0;
   padding: 20px 20px 30px;
 
   background-color: #fafafa;
@@ -162,9 +170,12 @@ input[type="radio"].visually-hidden {
 .card__photo {
   display: block;
   max-width: 200px;
-  height: auto;
+  width: 100%;
+  height: 250px;
   margin: 0 auto;
   margin-bottom: 15px;
+
+  object-fit: cover;
 }
 
 .card__species {}
@@ -178,10 +189,20 @@ input[type="radio"].visually-hidden {
   text-align: center;
 }
 
+.card__status {
+  font-weight: bold;
+  text-align: center;
+}
+
 .card__films {
   margin: 0;
   padding: 0;
-  list-style-type: none;
+  list-style-type: '–  ';
+}
+
+.card__films:empty::after {
+  content: 'no films :(';
+  margin-left: 15px;
 }
 
 .card__film {

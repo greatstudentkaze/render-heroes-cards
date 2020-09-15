@@ -1,7 +1,10 @@
 const filter = document.querySelector('.js-filter'),
-  filmList = filter.querySelector('.filter__list');
+  filmList = filter.querySelector('.filter__list'),
+  cardsList = document.querySelector('.cards__list');
 
-const preloader = `<div class="sk-circle-bounce">
+const appendPreloader = (target) => {
+  const preloaderWrap = document.createElement('div'),
+    preloader = `<div class="sk-circle-bounce">
                   <div class="sk-child sk-circle-1"></div>
                   <div class="sk-child sk-circle-2"></div>
                   <div class="sk-child sk-circle-3"></div>
@@ -16,10 +19,15 @@ const preloader = `<div class="sk-circle-bounce">
                   <div class="sk-child sk-circle-12"></div>
                 </div>`;
 
-const filterPreload = document.createElement('div');
-filterPreload.classList.add('filter__preload');
-filterPreload.innerHTML = preloader;
-filmList.append(filterPreload);
+  preloaderWrap.classList.add('preloader');
+  preloaderWrap.innerHTML = preloader;
+  target.append(preloaderWrap);
+
+  return preloaderWrap;
+};
+
+const filterPreload = appendPreloader(filmList),
+  cardsPreload = appendPreloader(cardsList);
 
 const getFilms = data => {
   const allFilms = data.reduce((allMovies, { movies }) => allMovies.concat(movies), []);
@@ -40,7 +48,62 @@ const renderFilms = films => {
   });
 
   filterPreload.remove();
-}
+};
+
+const renderCardYears = ({ birthDay, deathDay }) => {
+  let cardYears = '';
+  if (birthDay && deathDay) {
+    cardYears = `<p class="card__years">
+                    <span class="card__birthday">${birthDay}</span> - <span class="card__deathday">${deathDay}</span>
+                  </p>`;
+  } else if (birthDay) {
+    cardYears = `<p class="card__years">
+                    born in ${birthDay}
+                  </p>`;
+  } else if (deathDay) {
+    cardYears = `<p class="card__years">
+                    died in ${deathDay}
+                  </p>`;
+  }
+  return cardYears;
+};
+
+const renderCardFilms = ({ movies }) => {
+  let cardFilms = '';
+  if (movies) {
+    movies.forEach(movie => {
+      const li = document.createElement('li');
+      li.classList.add('card__film');
+      li.textContent = movie;
+      cardFilms += `\n${li.outerHTML}`;
+    });
+  }
+  return cardFilms;
+};
+
+const renderCards = data => {
+  data.forEach(item => {
+
+    cardsList.insertAdjacentHTML('beforeend',
+      `<li class="cards__item">
+              <article class="card">
+                <h3 class="card__title">${item.name}</h3>
+                <img class="card__photo" src="${item.photo ? item.photo : ''}" alt="">
+                <div class="card__columns">
+                  <p class="card__text">${item.species ? item.species : ''}</p>
+                  <p class="card__text">${item.gender ? item.gender : ''}</p>
+                </div>
+                ${renderCardYears(item)}
+                <p class="card__status card__text">${item.status ? item.status : ''}</p>
+                <p class="card__text">Actor: ${item.actors}</p>
+                <p class="card__label">Films:</p>
+                <ul class="card__films">${renderCardFilms(item)}</ul>
+              </article>
+            </li>`);
+
+    cardsPreload.remove();
+  });
+};
 
 fetch('dbHeroes.json')
   .then(response => {
@@ -49,13 +112,10 @@ fetch('dbHeroes.json')
   })
   .then(data => {
     const films = getFilms(data);
-
     renderFilms(films);
+    return data;
+  })
+  .then(data => {
+    renderCards(data);
   })
   .catch(err => console.error(err));
-
-filter.addEventListener('change', evt => {
-  const target = evt.target;
-
-  console.log(target.name, target.checked)
-});
