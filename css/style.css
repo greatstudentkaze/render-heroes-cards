@@ -95,6 +95,21 @@ input[type="radio"].visually-hidden {
   position: relative;
 }
 
+.filter__headline {
+  padding: 5px 10px;
+
+  font-weight: bold;
+}
+
+.filter__group {
+  margin: 0;
+  padding: 20px;
+
+  background-color: #fafafa;
+  border: 2px solid #cacaca;
+  border-radius: 5px;
+}
+
 .filter__list {
   margin: 0;
   padding: 0;
@@ -115,7 +130,6 @@ input[type="radio"].visually-hidden {
 
   width: 90%;
 }
-
 
 .filter__reset {
   position: absolute;
@@ -139,6 +153,10 @@ input[type="radio"].visually-hidden {
   user-select: none;
 }
 
+.cards__title {
+  margin-bottom: 44px;
+}
+
 .cards__list {
   margin: 0;
   padding: 0;
@@ -153,6 +171,12 @@ input[type="radio"].visually-hidden {
   min-height: 500px;
 }
 
+@media (min-width: 768px) {
+  .cards__list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 .cards__list:empty::after {
   content: 'No heroes :(';
 }
@@ -164,6 +188,7 @@ input[type="radio"].visually-hidden {
 
   background-color: #fafafa;
   border: 2px solid #cacaca;
+  border-radius: 5px;
 }
 
 .card__columns {

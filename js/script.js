@@ -36,6 +36,15 @@ const getFilms = data => {
 };
 
 const renderFilms = films => {
+  filmList.insertAdjacentHTML('afterbegin',
+    `<li class="filter__option">
+                <label class="option">
+                  <input class="option__input v1sually-hidden" type="checkbox" name="all" checked>
+                  <span class="option__checkbox"></span>
+                  All Heroes
+                </label>
+              </li>`);
+
   films.forEach(film => {
     filmList.insertAdjacentHTML('beforeend',
       `<li class="filter__option">
