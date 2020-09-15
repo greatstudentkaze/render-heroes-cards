@@ -82,8 +82,9 @@ const renderCardFilms = ({ movies }) => {
 };
 
 const renderCards = data => {
-  data.forEach(item => {
+  cardsList.textContent = '';
 
+  data.forEach(item => {
     cardsList.insertAdjacentHTML('beforeend',
       `<li class="cards__item">
               <article class="card">
@@ -113,9 +114,40 @@ fetch('dbHeroes.json')
   .then(data => {
     const films = getFilms(data);
     renderFilms(films);
+
+    const selectedFilms = new Set();
+
+    filter.addEventListener('reset', () => {
+      selectedFilms.clear();
+      renderCards(data);
+    });
+
+    filter.addEventListener('change', evt => {
+      const target = evt.target;
+
+      if (target.name === 'all' && target.checked) {
+        filter.reset();
+        return;
+      } else {
+        filter.querySelector('input[name="all"]').checked = false;
+      }
+
+      if (target.checked) selectedFilms.add(target.name);
+      else selectedFilms.delete(target.name);
+
+      const selectedFilmsData = data.filter(({ movies }) => {
+        if (movies) return movies.some(movie => selectedFilms.has(movie));
+      });
+      renderCards(selectedFilmsData);
+    });
+
     return data;
   })
   .then(data => {
     renderCards(data);
   })
-  .catch(err => console.error(err));
+  .catch(err => {
+    console.error(err);
+    filterPreload.remove();
+    cardsPreload.remove();
+  });
