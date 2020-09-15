@@ -165,15 +165,21 @@ input[type="radio"].visually-hidden {
   position: relative;
 
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   gap: 40px;
   min-height: 500px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 690px) {
   .cards__list {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 992px) {
+  .cards__list {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
@@ -183,7 +189,7 @@ input[type="radio"].visually-hidden {
 
 .card {
   max-width: 240px;
-  margin: 0;
+  margin: 0 auto;
   padding: 20px 20px 30px;
 
   background-color: #fafafa;
