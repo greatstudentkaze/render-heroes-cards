@@ -6,31 +6,33 @@
         content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Карточки героев</title>
+  <link rel="stylesheet" href="css/preload.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <main class="main container">
     <div class="main__columns">
       <section class="filters main__column main__column--small">
-        <h2 class="visually-hidden">Фильтр карточек</h2>
-        <form class="filter" method="get">
+        <h2 class="filter__title title">Фильтр карточек</h2>
+        <form class="filter js-filter" method="get">
+          <button class="filter__reset" type="reset">Сбросить</button>
           <fieldset class="filter__group">
             <legend class="filter__headline">Фильмы:</legend>
             <ul class="filter__list">
-              <li class="filter__option">
-                <label class="option">
-                  <input class="option__input v1sually-hidden" type="checkbox" name="film-1">
-                  <span class="option__checkbox"></span>
-                  Фильм 1
-                </label>
-              </li>
+<!--              <li class="filter__option">-->
+<!--                <label class="option">-->
+<!--                  <input class="option__input v1sually-hidden" type="checkbox" name="film-1">-->
+<!--                  <span class="option__checkbox"></span>-->
+<!--                  Фильм 1-->
+<!--                </label>-->
+<!--              </li>-->
             </ul>
           </fieldset>
         </form>
       </section>
 
       <section class="cards main__column main__column--large">
-        <h2 class="cards__title">Карточки героев</h2>
+        <h2 class="cards__title title">Карточки героев</h2>
         <ul class="cards__list">
           <li class="cards__item">
             <article class="card">
