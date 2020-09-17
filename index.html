@@ -35,7 +35,27 @@
 
       <section class="cards main__column main__column--large">
         <h2 class="cards__title title">Hero cards:</h2>
-        <ul class="cards__list"></ul>
+        <ul class="cards__list">
+          <template class="js-card">
+            <li class="cards__item">
+              <article class="card">
+                <h3 class="card__title js-title"></h3>
+                <img class="card__photo js-photo" src="" alt="">
+                <div class="card__columns">
+                  <p class="card__text js-card-species"></p>
+                  <p class="card__text js-card-gender"></p>
+                </div>
+                <p class="card__years js-years">
+                  <span class="js-birthday"></span> - <span class="js-deathday"></span>
+                </p>
+                <p class="card__status card__text js-status"></p>
+                <p class="card__text js-card-actors"></p>
+                <p class="card__label">Films:</p>
+                <ul class="card__films js-films"></ul>
+              </article>
+            </li>
+          </template>
+        </ul>
       </section>
     </div>
   </main>
