@@ -18,7 +18,17 @@
           <button class="filter__reset" type="reset">Reset</button>
           <fieldset class="filter__group">
             <legend class="filter__headline">Films:</legend>
-            <ul class="filter__list"></ul>
+            <ul class="filter__list">
+              <template class="js-filter-option">
+                <li class="filter__option">
+                  <label class="option">
+                    <input class="option__input v1sually-hidden" type="checkbox" name="">
+                    <span class="option__checkbox"></span>
+                    <span class="option__text"></span>
+                  </label>
+                </li>
+              </template>
+            </ul>
           </fieldset>
         </form>
       </section>

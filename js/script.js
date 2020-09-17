@@ -1,5 +1,6 @@
 const filter = document.querySelector('.js-filter'),
   filmList = filter.querySelector('.filter__list'),
+  filterOption = filmList.querySelector('.js-filter-option'),
   cardsList = document.querySelector('.cards__list');
 
 const appendPreloader = (target) => {
@@ -29,6 +30,18 @@ const appendPreloader = (target) => {
 const filterPreload = appendPreloader(filmList),
   cardsPreload = appendPreloader(cardsList);
 
+const addOption = ( { label, name, checked = false }, template, filterList) => {
+  const option = template.content.cloneNode(true),
+    optionInput = option.querySelector('.option__input'),
+    optionText = option.querySelector('.option__text');
+
+  optionInput.name = name;
+  optionText.textContent = label;
+  if (checked) optionInput.setAttribute('checked', 'true');
+
+  filterList.append(option);
+};
+
 const getFilms = data => {
   const allFilms = data.reduce((allMovies, { movies }) => allMovies.concat(movies), []);
 
@@ -36,24 +49,17 @@ const getFilms = data => {
 };
 
 const renderFilms = films => {
-  filmList.insertAdjacentHTML('afterbegin',
-    `<li class="filter__option">
-                <label class="option">
-                  <input class="option__input v1sually-hidden" type="checkbox" name="all" checked>
-                  <span class="option__checkbox"></span>
-                  All Heroes
-                </label>
-              </li>`);
+  addOption({
+    label: 'All Heroes',
+    name: 'all',
+    checked: true
+  }, filterOption, filmList);
 
   films.forEach(film => {
-    filmList.insertAdjacentHTML('beforeend',
-      `<li class="filter__option">
-              <label class="option">
-                <input class="option__input v1sually-hidden" type="checkbox" name="${film}">
-                <span class="option__checkbox"></span>
-                ${film}
-              </label>
-            </li>`);
+    addOption({
+      label: film,
+      name: film
+    }, filterOption, filmList);
   });
 
   filterPreload.remove();
