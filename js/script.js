@@ -1,8 +1,8 @@
 const filter = document.querySelector('.js-filter'),
   filmList = filter.querySelector('.filter__list'),
-  filterOptionTemplate = filmList.querySelector('.js-filter-option'),
+  filterOptionTemplate = document.querySelector('.js-filter-option'),
   cardsList = document.querySelector('.cards__list'),
-  cardTemplate = cardsList.querySelector('.js-card');
+  cardTemplate = document.querySelector('.js-card');
 
 const appendPreloader = (target) => {
   const preloaderWrap = document.createElement('div'),
